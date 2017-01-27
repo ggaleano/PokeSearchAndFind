@@ -58,7 +58,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        <#code#>
+        
+        var annotationView: MKAnnotationView?
+        
+        if annotation.isKind(of: MKUserLocation.self) {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
+            annotationView?.image = UIImage(named: "ash")
+        }
+        
+        return annotationView
     }
 
     @IBAction func spotRandomPokemon(_ sender: Any) {
